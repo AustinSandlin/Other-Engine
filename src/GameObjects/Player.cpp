@@ -130,7 +130,7 @@ void Player::update() {
 	}
 
 	if (getTransform().y < -100) {
-		SoundManager::get().playDeathSound();
+		SoundManager::get().playPlayerDeathSound();
 		SimulationManager::get().gameOver();
 	}
 }
