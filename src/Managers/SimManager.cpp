@@ -258,7 +258,7 @@ void SimulationManager::keyboardInput(unsigned char key, int x, int y) {
 
 					int x = player->getTransform().x + offset;
 					int y = player->getTransform().y + 16;
-					int v = 6; // velocity
+					int v = 12; // velocity
 
 					SoundManager::get().playShootingSound();
 					spawnProjectile("data/textures/bullet.png", x, y, v, direction);

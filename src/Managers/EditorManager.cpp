@@ -75,7 +75,7 @@ XMLElement* EditorManager::createTileSizeElement(GameObject* obj, XMLElement* ob
 // render editor menus
 void EditorManager::renderEditor() {
 	// draw edit square
-	glColor4f(0.3, 0.3, 0.3, 0.7);
+	glColor4f(0.2, 0.2, 0.2, 0.7);
 	GraphicsManager::get().drawSquareRelative(512, 128, 10, 10);
 
 	// draw object text
