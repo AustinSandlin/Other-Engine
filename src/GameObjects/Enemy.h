@@ -42,7 +42,7 @@ class Enemy: public GameObject{
 		bool canMoveFlag;
     
     public:
-        Enemy(string texture = "data/textures/goomba.png", int ai = 2);
+        Enemy(string texture = "data/textures/zombie.png", int ai = 2);
        ~Enemy();
     
         void update();
