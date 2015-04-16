@@ -613,8 +613,8 @@ void SimulationManager::loadLevelCreatePlayer(XMLElement* player) {
 
 void SimulationManager::loadLevelCreateObject(XMLElement* child) {
 	// vars
-	XMLElement *type, *location, *texture;
-	int x, y, z;
+	XMLElement *type, *location, *texture, *size;
+	int x, y, z, width, height;
 	bool physics;
 
 	// getting values
