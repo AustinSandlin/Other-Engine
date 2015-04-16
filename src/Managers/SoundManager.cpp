@@ -36,32 +36,42 @@ SoundManager::~SoundManager() {
 
 void SoundManager::playSound() {
     
-    engine->play2D("data/sound/smb_bump.wav", false, false, true);
+    engine->play2D("data/sound/sound.wav", false, false, true);
 }
 
 void SoundManager::playDeathSound(){
-    engine->play2D("data/sound/enemyDeath.wav", false, false, true);
+    engine->play2D("data/sound/death.wav", false, false, true);
 }
 
 void SoundManager::playShootingSound(){
-    engine->play2D("data/sound/projectile.wav", false, false, true);
+    engine->play2D("data/sound/shooting.wav", false, false, true);
+}
+
+void SoundManager::playNoAmmoSound(){
+	engine->play2D("data/sound/noammo.wav", false, false, true);
 }
 
 void SoundManager::playPlayerDeathSound(){
-    engine->play2D("data/sound/MM2Death.wav", false, false, true);
+    engine->play2D("data/sound/playerdeath.wav", false, false, true);
 }
 
 void SoundManager::playJumpSound(){
-    engine->play2D("data/sound/playerJump.wav", false, false, true);
+    engine->play2D("data/sound/jump.wav", false, false, true);
 }
 
 void SoundManager::playHealthPickupSound(){
-    engine->play2D("data/sound/healthPickup.wav", false, false, true);
+    engine->play2D("data/sound/healthpickup.wav", false, false, true);
 }
 
-void SoundManager::playItemPickupSound(){
-    engine->play2D("data/sound/item.wav", false, false, true);
+void SoundManager::playScorePickupSound(){
+    engine->play2D("data/sound/scorepickup.wav", false, false, true);
 }
+
+void SoundManager::playAmmoPickupSound() {
+	engine->play2D("data/sound/ammopickup.wav", false, false, true);
+}
+
+
 
 
 

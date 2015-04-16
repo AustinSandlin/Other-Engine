@@ -7,7 +7,7 @@ enum ObjectType {
 };
 
 enum ItemType {
-	HEALTH_ITEM, COIN_ITEM
+	HEALTH_ITEM, COIN_ITEM, AMMO_ITEM
 };
 
 enum AIBehaivor{

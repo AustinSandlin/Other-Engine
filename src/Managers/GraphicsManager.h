@@ -33,6 +33,7 @@ class GraphicsManager {
 		coord cameraTransform;
 		double fps;
 		int score;
+		int ammo;
 
 		static GraphicsManager* graphicsManager;
 		GraphicsManager();
@@ -72,6 +73,7 @@ class GraphicsManager {
 
 		void setFPS(double f) { fps = f; }
 		void setScore(int s) {score = s;}
+		void setAmmo(int a) {ammo = a;}
 		coord getCameraTransform() { return cameraTransform; }
 		void setCameraTransform(float x, float y, float z);
 };

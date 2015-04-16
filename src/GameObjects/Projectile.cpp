@@ -53,16 +53,17 @@ void Projectile::draw() {
 
 	glPushMatrix();
 	glTranslated(transform.x, transform.y, 0);
-	glBegin(GL_QUADS);
-		glTexCoord2f(0, 1);
-		glVertex2f(0, tileSize.y);
-		glTexCoord2f(1, 1);
-		glVertex2f(tileSize.x, tileSize.y);
-		glTexCoord2f(1, 0);
-		glVertex2f(tileSize.x, 0);
-		glTexCoord2f(0, 0);
-		glVertex2f(0, 0);
-	glEnd();
+	float yClip = 0.5 - (getRotate().z / 360.0);
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, yClip + 0.5);
+    glVertex2f(0, tileSize.y);
+    glTexCoord2f(1, yClip + 0.5);
+    glVertex2f(tileSize.x, tileSize.y);
+    glTexCoord2f(1, yClip);
+    glVertex2f(tileSize.x, 0);
+    glTexCoord2f(0, yClip);
+    glVertex2f(0, 0);
+    glEnd();
 	glPopMatrix();
 
 	// disable

@@ -62,6 +62,9 @@ bool Item::collide(GameObject* obj, CollisionSide side) {
 			case ItemType::COIN_ITEM:
 				coinItem((Player*) obj);
 				break;
+			case ItemType::AMMO_ITEM:
+				ammoItem((Player*) obj);
+				break;
 			default:
 				break;
 		}
@@ -84,8 +87,17 @@ void Item::healthItem(Player* player) {
 }
 
 void Item::coinItem(Player* player) {
-	SoundManager::get().playItemPickupSound();
+	SoundManager::get().playScorePickupSound();
 	SimulationManager::get().increaseScore();
 
 	PhysicsManager::get().destroyObject((GameObject*) this);
 }
+
+void Item::ammoItem(Player* player) {
+	SoundManager::get().playAmmoPickupSound();
+	SimulationManager::get().increaseAmmo();
+
+	PhysicsManager::get().destroyObject((GameObject*) this);
+}
+
+

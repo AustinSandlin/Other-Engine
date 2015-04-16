@@ -75,7 +75,7 @@ XMLElement* EditorManager::createTileSizeElement(GameObject* obj, XMLElement* ob
 // render editor menus
 void EditorManager::renderEditor() {
 	// draw edit square
-	glColor4f(0.3, 0.3, 0.3, 0.7);
+	glColor4f(0.2, 0.2, 0.2, 0.7);
 	GraphicsManager::get().drawSquareRelative(512, 128, 10, 10);
 
 	// draw object text
@@ -162,6 +162,7 @@ void EditorManager::saveGameObject(GameObject* obj, XMLElement* objElement, XMLD
 void EditorManager::saveObject(GameObject* obj, XMLElement* objElement, XMLDocument& doc) {
 	XMLElement* texture = doc.NewElement("texture");
 	XMLElement* physics = doc.NewElement("physics");
+	XMLElement* tilesize = createTileSizeElement(obj, objElement, doc);
 
 	// physics value
 	string physicsValue = "0";
@@ -176,6 +177,7 @@ void EditorManager::saveObject(GameObject* obj, XMLElement* objElement, XMLDocum
 	// link new elements
 	objElement->LinkEndChild(texture);
 	objElement->LinkEndChild(physics);
+	objElement->LinkEndChild(tilesize);
 }
 
 void EditorManager::savePlayer(GameObject* obj, XMLElement* objElement, XMLDocument& doc) {
