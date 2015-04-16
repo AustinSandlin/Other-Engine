@@ -1,5 +1,15 @@
 <data>
     <objects>
+		<object>
+            <type>0</type>
+            <location>
+                <x>200</x>
+                <y>300</y>
+                <z>0</z>
+            </location>
+            <texture>data/textures/clouds.png</texture>
+            <physics>0</physics>
+        </object>
         <object>
             <type>0</type>
             <location>
@@ -145,9 +155,9 @@
                 <y>32</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/items/coin.png</texture>
+            <texture>data/textures/items/ammopickup.png</texture>
             <item>
-                <type>1</type>
+                <type>2</type>
                 <stat>1</stat>
             </item>
             <size>
@@ -232,7 +242,7 @@
                 <y>32</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/goomba.png</texture>
+            <texture>data/textures/zombie.png</texture>
             <ai>1</ai>
         </object>
         <object>
@@ -322,7 +332,7 @@
                 <y>32</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/goomba.png</texture>
+            <texture>data/textures/zombie.png</texture>
             <ai>1</ai>
         </object>
         <object>
@@ -332,7 +342,7 @@
                 <y>32</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/goomba.png</texture>
+            <texture>data/textures/zombie.png</texture>
             <ai>3</ai>
         </object>
         <object>
@@ -843,7 +853,7 @@
                 <y>32</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/goomba.png</texture>
+            <texture>data/textures/zombie.png</texture>
             <ai>2</ai>
         </object>
         <object>
@@ -853,7 +863,7 @@
                 <y>32</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/goomba.png</texture>
+            <texture>data/textures/zombie.png</texture>
             <ai>1</ai>
         </object>
         <object>
@@ -1453,7 +1463,7 @@
                 <y>32</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/goomba.png</texture>
+            <texture>data/textures/zombie.png</texture>
             <ai>2</ai>
         </object>
         <object>
@@ -1463,7 +1473,7 @@
                 <y>160</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/goomba.png</texture>
+            <texture>data/textures/zombie.png</texture>
             <ai>3</ai>
         </object>
         <object>
@@ -1473,7 +1483,7 @@
                 <y>32</y>
                 <z>0</z>
             </location>
-            <texture>data/textures/goomba.png</texture>
+            <texture>data/textures/zombie.png</texture>
             <ai>3</ai>
         </object>
         <object>

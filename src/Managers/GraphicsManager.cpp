@@ -11,7 +11,7 @@ GraphicsManager::GraphicsManager() {
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	glutCreateWindow("OpenGL Template");
+	glutCreateWindow("Game");
 	init();
 
 	fps = 0.0;
@@ -129,12 +129,12 @@ void GraphicsManager::renderGameMode(vector<GameObject*> objects) {
 		objects[i]->draw();
 	}
 
-	glColor3f(0.0, 1.0, 0.0); // Green
+	glColor3f(1.0, 0.0, 0.0); // Red
 	drawDouble(fps, SCREEN_WIDTH - 54, SCREEN_HEIGHT - 15);
 	drawText("Score: ", 27, SCREEN_HEIGHT - 15);
 	drawInt(score, 90, SCREEN_HEIGHT - 15);
-	drawText("Ammo: ", 120, SCREEN_HEIGHT - 15);
-	drawInt(ammo, 180, SCREEN_HEIGHT - 15);
+	drawText("Ammo: ", 140, SCREEN_HEIGHT - 15);
+	drawInt(ammo, 200, SCREEN_HEIGHT - 15);
 
     // update screen
     glutSwapBuffers();
@@ -319,7 +319,7 @@ void GraphicsManager::drawSelectionConfirm(ObjectInsertion& objToInsert, double 
 
 void GraphicsManager::init() {
 	// init
-	glClearColor(0.6, 0.6, 0.6, 1.0);
+	glClearColor(0.4, 0.4, 0.4, 1.0);
 
 	// init projection
 	setOrthoView();

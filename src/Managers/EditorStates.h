@@ -51,6 +51,8 @@ struct ObjectInsertion {
 				return "Health";
 			case ItemType::COIN_ITEM:
 				return "Coin";
+			case ItemType::AMMO_ITEM:
+				return "Ammo";
 			default:
 				return "";
 		}
