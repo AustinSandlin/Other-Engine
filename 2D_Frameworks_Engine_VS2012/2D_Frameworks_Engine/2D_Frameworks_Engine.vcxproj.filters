@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{88ad134d-f856-4fa8-a2ff-fe4ecba2ff0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{0bd870cf-e10d-4863-8c36-aa14e1da9b0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tinyxml2">
+      <UniqueIdentifier>{8b1ef82e-f8ad-4f3f-afde-030e741ee72f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\HUD">
+      <UniqueIdentifier>{459414ae-8600-4d2b-8f04-784f69afdd44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Items">
+      <UniqueIdentifier>{b0c173a7-94db-4d39-a93c-660153ae69af}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\GameObjects\GameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\Object.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\Player.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Managers\GraphicsManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Managers\PhysicsManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Managers\SimManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Managers\SoundManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Managers\InputManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tinyxml2\tinyxml2.cpp">
+      <Filter>Source Files\tinyxml2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Managers\EditorManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\AIController.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\Enemy.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\HealthHUD.cpp">
+      <Filter>Source Files\GameObjects\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\HUDObject.cpp">
+      <Filter>Source Files\GameObjects\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\Projectile.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\Items\Item.cpp">
+      <Filter>Source Files\GameObjects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameObjects\EndFlag.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\GameObjects\GameObject.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\Object.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\Player.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Managers\GraphicsManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Managers\PhysicsManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Managers\SimManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Managers\SoundManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Managers\InputManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tinyxml2\tinyxml2.h">
+      <Filter>Source Files\tinyxml2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Managers\EditorManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\AIController.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\Enemy.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\HUDObject.h">
+      <Filter>Source Files\GameObjects\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\HealthHUD.h">
+      <Filter>Source Files\GameObjects\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Managers\PhysicsProperties.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\Projectile.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\Items\Item.h">
+      <Filter>Source Files\GameObjects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Managers\EditorStates.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\GameObjectEnums.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameObjects\EndFlag.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
