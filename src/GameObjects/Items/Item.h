@@ -32,6 +32,7 @@ class Item : public GameObject {
 		// item functions
 		void healthItem(Player* player);
 		void coinItem(Player* player);
+		void ammoItem(Player* player);
 
 	public:
 		// constructor/deconstructor

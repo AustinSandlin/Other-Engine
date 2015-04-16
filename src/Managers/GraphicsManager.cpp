@@ -16,6 +16,7 @@ GraphicsManager::GraphicsManager() {
 
 	fps = 0.0;
 	score = 0;
+	ammo = 20;
 }
 
 GraphicsManager::~GraphicsManager() {
@@ -131,7 +132,9 @@ void GraphicsManager::renderGameMode(vector<GameObject*> objects) {
 	glColor3f(0.0, 1.0, 0.0); // Green
 	drawDouble(fps, SCREEN_WIDTH - 54, SCREEN_HEIGHT - 15);
 	drawText("Score: ", 27, SCREEN_HEIGHT - 15);
-	drawInt(score, 90,SCREEN_HEIGHT - 15);
+	drawInt(score, 90, SCREEN_HEIGHT - 15);
+	drawText("Ammo: ", 120, SCREEN_HEIGHT - 15);
+	drawInt(ammo, 180, SCREEN_HEIGHT - 15);
 
     // update screen
     glutSwapBuffers();
