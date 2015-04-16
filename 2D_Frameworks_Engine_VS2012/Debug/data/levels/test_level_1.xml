@@ -1,6 +1,6 @@
 <data>
     <objects>
-		<object>
+        <object>
             <type>0</type>
             <location>
                 <x>200</x>
@@ -14,7 +14,6 @@
                 <h>128</h>
             </size>
         </object>
-	
         <object>
             <type>0</type>
             <location>
@@ -2078,6 +2077,18 @@
                 <z>0</z>
             </location>
             <texture>data/textures/flag.png</texture>
+        </object>
+        <object>
+            <type>7</type>
+            <location>
+                <x>224</x>
+                <y>32</y>
+                <z>0</z>
+            </location>
+            <texture>data/textures/yellow_block.pngdata/textures/goomba.png</texture>
+            <interval/>
+            <enemy-texture/>
+            <enemy-ai>101</enemy-ai>
         </object>
     </objects>
     <hud>

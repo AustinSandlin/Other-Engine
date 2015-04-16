@@ -285,6 +285,9 @@ void EditorManager::insertGameObject() {
 			case ObjectType::FLAG:
 				tempObj = new EndFlag(objectToInsert.texture.c_str());
 				break;
+			case ObjectType::SPAWNER:
+				tempObj = new Spawner(objectToInsert.texture.c_str(), objectToInsert.spawnInterval, objectToInsert.enemyTexture, objectToInsert.AIPattern);
+				break;
 			default: 
 				return;
 		}

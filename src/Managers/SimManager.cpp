@@ -318,10 +318,10 @@ void SimulationManager::insertStateInput() {
 					EditorManager::get().getObjectToInsert().typeToInsert = ObjectType::FLAG;
 					break;
 				case ObjectType::FLAG:
-					EditorManager::get().getObjectToInsert().typeToInsert = ObjectType::OBJECT;
+					EditorManager::get().getObjectToInsert().typeToInsert = ObjectType::SPAWNER;
 					break;
 				case ObjectType::SPAWNER:
-					EditorManager::get().getObjectToInsert().typeToInsert = ObjectType::SPAWNER;
+					EditorManager::get().getObjectToInsert().typeToInsert = ObjectType::OBJECT;
 					break;
 				default:
 					break;
@@ -396,9 +396,8 @@ void SimulationManager::stateConfirmationInput() {
 					// prompt for texture and set texture
 					string texturePath = getTextureFromFilePicker();
 					EditorManager::get().getObjectToInsert().texture = texturePath;
-
-					break;
 				}
+				break;
 			case ObjectType::ENEMY: {
 					EditorManager::get().setInsertState(InsertState::ENEMY_TEXTURE);
 					
@@ -422,9 +421,8 @@ void SimulationManager::stateConfirmationInput() {
 					// prompt for texture and set texture
 					string texturePath = getTextureFromFilePicker();
 					EditorManager::get().getObjectToInsert().texture = texturePath;
-
-					break;
 				}
+				break;
 			case ObjectType::SPAWNER: {
 					// set next state
 					EditorManager::get().setInsertState(InsertState::SPAWNER_TEXTURE);
@@ -432,9 +430,8 @@ void SimulationManager::stateConfirmationInput() {
 					// prompt for texture and set texture
 					string texturePath = getTextureFromFilePicker();
 					EditorManager::get().getObjectToInsert().texture = texturePath;
-
-					break;
 				}
+				break;
 			default:
 				break;
 		}
@@ -461,36 +458,32 @@ void SimulationManager::stateConfirmationInput() {
 		EditorManager::get().setInsertState(InsertState::SPAWNER_INTERVAL);
 		break;
 	case InsertState::SPAWNER_INTERVAL: {
-		EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_TEXTURE);
+			EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_TEXTURE);
 
-		// prompt for interval and set interval
-		int interval = getIntervalFromConsole();
-		EditorManager::get().getObjectToInsert().spawnInterval = interval;
-
-		break;
+			// prompt for interval and set interval
+			int interval = getIntervalFromConsole();
+			EditorManager::get().getObjectToInsert().spawnInterval = interval;
 		}
+		break;
 	case InsertState::SPAWNER_ENEMY_TEXTURE: {
-		EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_AI);
+			EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_AI);
 
-		// prompt for texture and set texture
-		string enemyTexturePath = getTextureFromFilePicker();
-		EditorManager::get().getObjectToInsert().enemyTexture = enemyTexturePath;
-
-		break;
+			// prompt for texture and set texture
+			string enemyTexturePath = getTextureFromFilePicker();
+			EditorManager::get().getObjectToInsert().enemyTexture = enemyTexturePath;
 		}
-	case InsertState::SPAWNER_ENEMY_AI: {
+		break;
+	case InsertState::SPAWNER_ENEMY_AI:
 		EditorManager::get().setInsertState(InsertState::SPAWNER_CONFIRM);
 		break;
-		}
 	case InsertState::PLAYER_CONFIRM:
 	case InsertState::OBJECT_CONFIRM:
 	case InsertState::ENEMY_CONFIRM:
 	case InsertState::ITEM_CONFIRM:
 	case InsertState::FLAG_CONFIRM:
-	case InsertState::SPAWNER_CONFIRM: {
+	case InsertState::SPAWNER_CONFIRM:
 		EditorManager::get().setInsertState(InsertState::READY);
 		break;
-		}
 	default:
 		break;
 	}

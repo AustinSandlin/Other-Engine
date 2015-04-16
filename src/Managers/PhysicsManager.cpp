@@ -50,7 +50,7 @@ void PhysicsManager::move(GameObject* obj) {
 
 					if (objects[i]->collide(obj, sideA) && obj->collide(objects[i], sideB)) {
 						// only allow objects to move through spawners
-						if (objects[i]->getObjectType() != SPAWNER && obj->getObjectType() == SPAWNER) {
+						if (objects[i]->getObjectType() != SPAWNER && obj->getObjectType() != SPAWNER) {
 							newTransform.x = (int) obj->getTransform().x;
 						}
 					}
@@ -82,7 +82,7 @@ void PhysicsManager::move(GameObject* obj) {
 					}
 
 					// only allow objects to move through spawners
-					if (objects[i]->getObjectType() != SPAWNER && obj->getObjectType() == SPAWNER) {
+					if (objects[i]->getObjectType() != SPAWNER && obj->getObjectType() != SPAWNER) {
 						newTransform.y = (int) obj->getTransform().y;
 					}
 
