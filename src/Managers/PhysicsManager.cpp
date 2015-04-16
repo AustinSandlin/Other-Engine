@@ -49,8 +49,10 @@ void PhysicsManager::move(GameObject* obj) {
 					}
 
 					if (objects[i]->collide(obj, sideA) && obj->collide(objects[i], sideB)) {
-						// don't allow object to move
-						newTransform.x = (int) obj->getTransform().x;
+						// only allow objects to move through spawners
+						if (objects[i]->getObjectType() != SPAWNER && obj->getObjectType() == SPAWNER) {
+							newTransform.x = (int) obj->getTransform().x;
+						}
 					}
 					
 					//setPlayerCollision(true);
@@ -79,8 +81,10 @@ void PhysicsManager::move(GameObject* obj) {
 						sideB = CollisionSide::TOP;
 					}
 
-					// don't allow object to move
-					newTransform.y = (int) obj->getTransform().y;
+					// only allow objects to move through spawners
+					if (objects[i]->getObjectType() != SPAWNER && obj->getObjectType() == SPAWNER) {
+						newTransform.y = (int) obj->getTransform().y;
+					}
 
 					if (objects[i]->collide(obj, sideA)) {
 						//SimulationManager::get().removeObject(objects[i]);

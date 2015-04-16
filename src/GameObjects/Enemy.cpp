@@ -38,7 +38,6 @@ Enemy::Enemy(string texture, int ai){
 }
 
 Enemy::~Enemy(){
-    
 }
 
 int Enemy::getHealth(){

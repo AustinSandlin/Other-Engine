@@ -19,7 +19,12 @@ enum InsertState {
 	ITEM_TYPE,
 	ITEM_CONFIRM,
 	FLAG_TEXTURE,
-	FLAG_CONFIRM
+	FLAG_CONFIRM,
+	SPAWNER_TEXTURE,
+	SPAWNER_INTERVAL,
+	SPAWNER_ENEMY_TEXTURE,
+	SPAWNER_ENEMY_AI,
+	SPAWNER_CONFIRM
 };
 
 struct ObjectInsertion {
@@ -27,6 +32,8 @@ struct ObjectInsertion {
 	string texture;
 	AIBehaivor AIPattern;
 	ItemType itemType;
+	string enemyTexture;
+	int spawnInterval;
 
 	string getTypeString() {
 		switch (typeToInsert) {
@@ -40,6 +47,8 @@ struct ObjectInsertion {
 				return "Item";
 			case ObjectType::FLAG:
 				return "End Flag";
+			case ObjectType::SPAWNER:
+				return "Spawner";
 			default:
 				return "";
 		}

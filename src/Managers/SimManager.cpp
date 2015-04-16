@@ -305,6 +305,9 @@ void SimulationManager::insertStateInput() {
 				case ObjectType::FLAG:
 					EditorManager::get().getObjectToInsert().typeToInsert = ObjectType::OBJECT;
 					break;
+				case ObjectType::SPAWNER:
+					EditorManager::get().getObjectToInsert().typeToInsert = ObjectType::SPAWNER;
+					break;
 				default:
 					break;
 			}
@@ -334,6 +337,21 @@ void SimulationManager::insertStateInput() {
 					break;
 				default:
 					EditorManager::get().getObjectToInsert().itemType = ItemType::HEALTH_ITEM;
+					break;
+			}
+			break;
+		case InsertState::SPAWNER_ENEMY_AI:
+			switch (EditorManager::get().getObjectToInsert().AIPattern) {
+				case AIBehaivor::HOOMER:
+					EditorManager::get().getObjectToInsert().AIPattern = AIBehaivor::JUMPER;
+					break;
+				case AIBehaivor::JUMPER:
+					EditorManager::get().getObjectToInsert().AIPattern = AIBehaivor::WANDER;
+					break;
+				case AIBehaivor::WANDER:
+					EditorManager::get().getObjectToInsert().AIPattern = AIBehaivor::HOOMER;
+					break;
+				default:
 					break;
 			}
 			break;
@@ -389,6 +407,16 @@ void SimulationManager::stateConfirmationInput() {
 
 						break;
 					}
+				case ObjectType::SPAWNER: {
+						// set next state
+						EditorManager::get().setInsertState(InsertState::SPAWNER_TEXTURE);
+
+						// prompt for texture and set texture
+						string texturePath = getTextureFromFilePicker();
+						EditorManager::get().getObjectToInsert().texture = texturePath;
+
+						break;
+					}
 				default:
 					break;
 			}
@@ -411,11 +439,34 @@ void SimulationManager::stateConfirmationInput() {
 		case InsertState::FLAG_TEXTURE:
 			EditorManager::get().setInsertState(InsertState::FLAG_CONFIRM);
 			break;
+		case InsertState::SPAWNER_TEXTURE:
+			EditorManager::get().setInsertState(InsertState::SPAWNER_INTERVAL);
+			break;
+		case InsertState::SPAWNER_INTERVAL:
+			EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_TEXTURE);
+
+			// prompt for interval and set interval
+			int interval = getIntervalFromConsole();
+			EditorManager::get().getObjectToInsert().spawnInterval = interval;
+
+			break;
+		case InsertState::SPAWNER_ENEMY_TEXTURE:
+			EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_AI);
+
+			// prompt for texture and set texture
+			string enemyTexturePath = getTextureFromFilePicker();
+			EditorManager::get().getObjectToInsert().enemyTexture = enemyTexturePath;
+
+			break;
+		case InsertState::SPAWNER_ENEMY_AI:
+			EditorManager::get().setInsertState(InsertState::SPAWNER_CONFIRM);
+			break;
 		case InsertState::PLAYER_CONFIRM:
 		case InsertState::OBJECT_CONFIRM:
 		case InsertState::ENEMY_CONFIRM:
 		case InsertState::ITEM_CONFIRM:
 		case InsertState::FLAG_CONFIRM:
+		case InsertState::SPAWNER_CONFIRM:
 			EditorManager::get().setInsertState(InsertState::READY);
 			break;
 		default:
@@ -430,6 +481,15 @@ string SimulationManager::getTextureFromFilePicker() {
 	cin >> texture;
 
 	return texture;
+}
+
+int SimulationManager::getIntervalFromConsole() {
+	int interval;
+	
+	printf("Enter spawner interval: ");
+	cin >> interval;
+
+	return interval;
 }
 
 void SimulationManager::mouseInput(int button, int state, int x, int y) {
@@ -545,6 +605,9 @@ void SimulationManager::loadLevel(const char* filename) {
 				break;
 			case ObjectType::FLAG:
 				loadLevelCreateFlag(child);
+				break;
+			case ObjectType::SPAWNER:
+				loadLevelCreateSpawner(child);
 				break;
 			default:
 				break;
@@ -671,6 +734,23 @@ void SimulationManager::loadLevelCreateFlag(XMLElement* item) {
 	GameObject* flagObj = new EndFlag(textureStr);
 	flagObj->setTransform(x, y, z);
 	addObject(flagObj, true);
+}
+
+void SimulationManager::loadLevelCreateSpawner(XMLElement* spawner){
+
+    XMLElement* location = spawner->FirstChildElement("location");
+    int x = atoi(location->FirstChildElement("x")->GetText());
+    int y = atoi(location->FirstChildElement("y")->GetText());
+    int z = atoi(location->FirstChildElement("z")->GetText());
+    string texture = enemy->FirstChildElement("texture")->getText();
+	int interval = atoi(enemy->FirstChildElement("interval")->getText());
+	string enemyTexture = enemy->FirstChildElement("enemy-texture")->getText();
+	int enemyAI = atoi(enemy->FirstChildElement("enemy-ai")->GetText());
+    
+	Spawner* spawnerObj = new Spawner(texture, interval, enemyTexture, enemyAI);
+    spawnerObj->setTransform(x, y, z);
+    
+    addObject(spawnerObj, true);
 }
 
 void SimulationManager::centerCameraOnPlayer(GameObject* obj) {

@@ -118,9 +118,14 @@ void EditorManager::saveLevel(const char* filename, vector<GameObject*> objects)
 				saveItem(objects[i], tempObject, doc);
 				objectsElements->LinkEndChild(tempObject);
 				break;
-			case ObjectType::FLAG:
+			case FLAG:
 				saveGameObject(objects[i], tempObject, doc);
 				saveEndFlag(objects[i], tempObject, doc);
+				objectsElements->LinkEndChild(tempObject);
+				break;
+			case FLAG:
+				saveGameObject(objects[i], tempObject, doc);
+				saveSpawner(objects[i], tempObject, doc);
 				objectsElements->LinkEndChild(tempObject);
 				break;
 			case HEALTH_HUD:
@@ -225,6 +230,27 @@ void EditorManager::saveEndFlag(GameObject* obj, XMLElement* objElement, XMLDocu
 	texture->LinkEndChild(doc.NewText(((EndFlag*) obj)->getTexturePath().c_str()));
 
 	objElement->LinkEndChild(texture);
+}
+
+void EditorManager::saveSpawner(GameObject* obj, XMLElement* objElement, XMLDocument& doc){
+	XMLElement* texture = doc.NewElement("texture");
+	XMLElement* interval = doc.NewElement("interval");
+	XMLElement* enemyTexture = doc.NewElement("enemy-texture");
+	XMLElement* enemyAI = doc.NewElement("enemy-ai");
+
+	string intervalString = to_string((int) ((Spawner*) obj)->getSpawnInterval());
+	string aiString = to_string((int) ((Spawner*) obj)->getEnemyAIBehaivor());
+
+	// create and set values
+	texture->LinkEndChild(doc.NewText(((Spawner*) obj)->getTexturePath().c_str()));
+	enemyAI->LinkEndChild(doc.NewText(intervalString.c_str()));
+	texture->LinkEndChild(doc.NewText(((Spawner*) obj)->getEnemyTexturePath().c_str()));
+	enemyAI->LinkEndChild(doc.NewText(aiString.c_str()));
+
+	objElement->LinkEndChild(texture);
+	objElement->LinkEndChild(interval);
+	objElement->LinkEndChild(enemyTexture);
+	objElement->LinkEndChild(enemyAI);
 }
 
 void EditorManager::saveHealthHUD(GameObject* obj, XMLElement* objElement, XMLDocument& doc) {

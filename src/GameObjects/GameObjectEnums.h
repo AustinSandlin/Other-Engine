@@ -3,7 +3,7 @@
 
 enum ObjectType {
 	NONE = -1, OBJECT, PLAYER, HEALTH_HUD, ENEMY, PROJECTILE,
-	ITEM, FLAG
+	ITEM, FLAG, SPAWNER
 };
 
 enum ItemType {
