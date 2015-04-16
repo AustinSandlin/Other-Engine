@@ -30,7 +30,7 @@ Player::Player(){
 	canJumpFlag = false;
 
 	// load image
-	textureID = GraphicsManager::get().loadImageFromTexture("data/textures/ss2_gohan_dir.png");
+	textureID = GraphicsManager::get().loadImageFromTexture("data/textures/player.png");
 
 	// default health
 	maxHealth = 12;
