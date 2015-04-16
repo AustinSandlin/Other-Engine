@@ -13,7 +13,7 @@ Enemy::Enemy(string texture, int ai){
     velocity.y = 0;
     velocity.z = 0;
     
-    setTileSize(32, 32);
+    setTileSize(32, 64);
     animationFrame = 0;
     
     //load image
@@ -62,7 +62,6 @@ void Enemy::update(){
     
     switch (getAIBehaivor()) {
         case  1:
-            
             AIController::get().wander(this, getWanderMaxDistance(), getWanderMinDistance());
             break;
         case 2:
@@ -90,16 +89,19 @@ void Enemy::draw(){
     
     glPushMatrix();
     glTranslated(transform.x, transform.y, 0);
+    
+    float yClip = 0.5 - (getRotate().z / 360.0);
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 1);
+    glTexCoord2f(0, yClip + 0.5);
     glVertex2f(0, tileSize.y);
-    glTexCoord2f(1, 1);
+    glTexCoord2f(1, yClip + 0.5);
     glVertex2f(tileSize.x, tileSize.y);
-    glTexCoord2f(1, 0);
+    glTexCoord2f(1, yClip);
     glVertex2f(tileSize.x, 0);
-    glTexCoord2f(0, 0);
+    glTexCoord2f(0, yClip);
     glVertex2f(0, 0);
     glEnd();
+    
     glPopMatrix();
     
     glDisable(GL_TEXTURE_2D);
@@ -142,7 +144,7 @@ void Enemy::setHealth(int h){
     }
 }
 bool Enemy::collide(GameObject* obj, CollisionSide side) {
-    
+
     // Player
     if (obj->getObjectType() == ObjectType::PLAYER) {
         if (side == CollisionSide::LEFT) {

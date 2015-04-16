@@ -31,6 +31,8 @@ GameObject::GameObject(){
     jumpTrans.z = 0;
     canJumpFlag = true;
     
+    objectType = NONE;
+    
 }
 
 GameObject::~GameObject(){

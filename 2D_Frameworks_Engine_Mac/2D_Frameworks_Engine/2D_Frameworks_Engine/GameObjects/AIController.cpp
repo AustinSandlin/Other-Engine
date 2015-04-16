@@ -37,9 +37,11 @@ void AIController::wander(GameObject*obj, int maxWanderDistance, int minWanderDi
     
     if (obj->getTransform().x >= maxWanderDistance) {
         obj->setVelocity(-1 * abs(obj->getVelocity().x), obj->getVelocity().y, 0);
+        obj->setRotate(0, 0, 180);
     }
     else if (obj->getTransform().x <= minWanderDistance) {
         obj->setVelocity(abs(obj->getVelocity().x), obj->getVelocity().y, 0);
+        obj->setRotate(0, 0, 0);
     }
     
     PhysicsManager::get().move(obj);
@@ -63,35 +65,6 @@ void AIController::jump(GameObject* obj){
         PhysicsManager::get().move(obj);
     }
 }
-
-
-//void AIController::shoot(GameObject* obj){
-//    // cout << obj->getTransform().x - player->getTransform().x;
-//    // If the player is within the enemies range than start shooting projectiles.
-//    if((obj->getTransform().x - player->getTransform().x ) <= 100 && (obj->getTransform().x - player->getTransform().x ) > 0){
-//
-//
-//        // Create the projectile object shoot left: (1, -6) shoot right: (-1, velocity: 6, offset: 28)
-//        float direction = 1;
-//        float offset = (-1) * (obj->getTile().x / 2);
-//
-//        // If player is on the right side of the enemy then shoot towards that side
-//        /*if (player->getRotate().z == 180) {
-//         direction = -1;
-//         offset = 0;
-//         }*/
-//
-//        int x = obj->getTransform().x + offset;
-//        int y = obj->getTransform().y + 10;
-//        int v = -6; // velocity
-//
-//
-//
-//        SimulationManager::get().spawnProjectile("data/texutres/goomba.png", x, y, v, direction);
-//
-//    }
-//
-//}
 
 void AIController::hoomer(GameObject *obj){
     

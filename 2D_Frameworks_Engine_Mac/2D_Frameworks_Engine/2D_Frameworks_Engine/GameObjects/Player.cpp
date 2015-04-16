@@ -92,7 +92,6 @@ void Player::update() {
         xVel -= 0.4;
     }
     else if(accelRight && xVel < MAXVELRIGHT){
-        cout << "right" << endl;
         xVel += 0.4;
     }
     

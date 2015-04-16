@@ -48,7 +48,8 @@ void PhysicsManager::move(GameObject* obj) {
                     sideB = CollisionSide::LEFT;
                 }
                 
-                if (objects[i]->collide(obj, sideA) && obj->collide(objects[i], sideB)) {
+                if (objects[i]->collide(obj, sideA) &&
+                    obj->collide(objects[i], sideB)) {
                     // don't allow object to move
                     newTransform.x = (int) obj->getTransform().x;
                 }

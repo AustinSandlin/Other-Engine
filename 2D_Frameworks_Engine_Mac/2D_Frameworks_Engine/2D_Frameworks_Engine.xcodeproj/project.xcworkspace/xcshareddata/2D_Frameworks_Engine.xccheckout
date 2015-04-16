@@ -14,7 +14,7 @@
 		<string>https://github.com/TalonCloud/Other-Engine.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>2D_Frameworks_Engine_Mac copy/2D_Frameworks_Engine/2D_Frameworks_Engine.xcodeproj/project.xcworkspace</string>
+	<string>2D_Frameworks_Engine_Mac/2D_Frameworks_Engine/2D_Frameworks_Engine.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F2D23255F262898F76FDB40715227EFB8BD09840</key>

@@ -57,6 +57,7 @@ void SimulationManager::eventLoop() {
                 for (unsigned int i = 0; i < objects.size(); i++) {
                     if (objects[i] == removeQueue[0]) {
                         objects.erase(objects.begin() + i);
+                        //--i;
                     }
                 }
                 
@@ -254,7 +255,7 @@ void SimulationManager::keyboardInput(unsigned char key, int x, int y) {
                 int v = 6; // velocity
                 
                 SoundManager::get().playShootingSound();
-                spawnProjectile("data/textures/goomba.png", x, y, v, direction);
+                spawnProjectile("data/textures/bullet.png", x, y, v, direction);
             } else {
                 if (EditorManager::get().getInsertState() != InsertState::READY) {
                     insertStateInput();
@@ -494,6 +495,12 @@ void SimulationManager::spawnProjectile(string texture, int x, int y, int veloci
     
     proj->setTransform(x, y, 0);
     proj->setVelocity(velocity * direction, 0, 0);
+    if(direction == 1) {
+        proj->setRotate(0, 0, 0);
+    }
+    else {
+        proj->setRotate(0, 0, 180);
+    }
     addObject(proj, true);
 }
 
