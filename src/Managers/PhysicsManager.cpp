@@ -92,6 +92,13 @@ void PhysicsManager::move(GameObject* obj) {
 		}
 	}
 
+	if(newTransform.x > obj.getTransform.x) {
+		obj->setRotate(0, 0, 0);
+	}
+	else if(newTransform.x < obj.getTransform.x) {
+		obj->setRotate(0, 0, 180);
+	}
+
 	obj->setTransform(newTransform);
 
 	// if player object, update camera
