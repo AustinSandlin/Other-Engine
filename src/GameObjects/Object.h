@@ -28,6 +28,7 @@ class Object: public GameObject{
 	   Object();
 	   Object(const char* filename, bool physics);
 	   Object(const char* filename, bool physics, const char* loadTexturePath);
+	   Object(const char* filename, bool physics, int width, int height);
 
 		~Object();
 		void update();
