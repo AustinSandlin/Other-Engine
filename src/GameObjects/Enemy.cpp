@@ -25,7 +25,7 @@ Enemy::Enemy(string texture, int ai){
 	physicsProperties.maskBits = PhysicsMask::P_MASK_ENEMY;
 
 	// default health
-	maxHealth = 2;
+	maxHealth = 4;
 	health = maxHealth;
     gravity = true;
 

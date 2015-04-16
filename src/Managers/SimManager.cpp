@@ -107,12 +107,12 @@ void SimulationManager::eventLoop() {
 				case 1:
 					loadLevel("data/levels/test_level_1.xml");
 					break;
-				case 2:
+				/*case 2:
 					loadLevel("data/levels/test_level_2.xml");
 					break;
 				case 3:
 					loadLevel("data/levels/test_level_3.xml");
-					break;
+					break;*/
 				default:
 					break;
 			}
@@ -127,12 +127,12 @@ void SimulationManager::eventLoop() {
 				case 1:
 					loadLevel("data/levels/test_level_1.xml");
 					break;
-				case 2:
+				/*case 2:
 					loadLevel("data/levels/test_level_2.xml");
 					break;
 				case 3:
 					loadLevel("data/levels/test_level_3.xml");
-					break;
+					break;*/
 				default:
 					level = 1;
 					loadLevel("data/levels/test_level_1.xml");
@@ -257,7 +257,7 @@ void SimulationManager::keyboardInput(unsigned char key, int x, int y) {
 					}
 
 					int x = player->getTransform().x + offset;
-					int y = player->getTransform().y + 16;
+					int y = player->getTransform().y + 34;
 					int v = 12; // velocity
 
 					SoundManager::get().playShootingSound();
@@ -533,7 +533,7 @@ void SimulationManager::increaseScore(){
 }
 
 void SimulationManager::increaseAmmo() {
-	ammo += 20;
+	ammo += 10;
 	GraphicsManager::get().setAmmo(ammo);
 }
 
