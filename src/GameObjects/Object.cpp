@@ -31,6 +31,20 @@ Object::Object(const char* filename, bool physics) {
 	texturePath = filename;
 }
 
+Object::Object(const char* filename, bool physics, int width, int height) {
+	tileSize.x = width;
+	tileSize.y = height;
+
+	objectType = OBJECT;
+	physicsProperties.categoryBits = PhysicsCategory::P_CAT_OBJECT;
+
+	textureID = GraphicsManager::get().loadImageFromTexture(filename);
+
+	physicsEnable = physics;
+
+	texturePath = filename;
+}
+
 Object::~Object(){
     
 }
