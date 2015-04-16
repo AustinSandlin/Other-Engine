@@ -43,10 +43,12 @@ public:
     void playSound();
     void playDeathSound();
     void playShootingSound();
+	void playNoAmmoSound();
     void playPlayerDeathSound();
     void playJumpSound();
 	void playHealthPickupSound();
-	void playItemPickupSound();
+	void playScorePickupSound();
+	void playAmmoPickupSound();
 };
 
 

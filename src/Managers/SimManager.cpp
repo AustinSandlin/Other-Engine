@@ -19,6 +19,7 @@ SimulationManager::SimulationManager() {
 	isGameOver = false;
 	level = 1;
 	score = 0;
+	ammo = 20;
 
 	// load first level
 	loadLevel("data/levels/test_level_1.xml");
@@ -98,7 +99,10 @@ void SimulationManager::eventLoop() {
 		}
 		else if (isGameOver) {
 			score = 0;
+			ammo = 20;
+
 			GraphicsManager::get().setScore(score);
+			GraphicsManager::get().setAmmo(ammo);
 			switch (level) {
 				case 1:
 					loadLevel("data/levels/test_level_1.xml");
@@ -115,7 +119,9 @@ void SimulationManager::eventLoop() {
 		}
 		else if (levelComplete) {
 			score = 0;
+			ammo = 20;
 			GraphicsManager::get().setScore(score);
+			GraphicsManager::get().setAmmo(ammo);
 			level++;
 			switch (level) {
 				case 1:
@@ -192,6 +198,8 @@ void SimulationManager::keyboardInput(unsigned char key, int x, int y) {
 
 				score = 0;
 				GraphicsManager::get().setScore(score);
+				ammo = 20;
+				GraphicsManager::get().setAmmo(ammo);
 
 				string editLevelStr = "data/levels/test_level_";
 				editLevelStr += to_string(level);
@@ -240,19 +248,26 @@ void SimulationManager::keyboardInput(unsigned char key, int x, int y) {
 			break;
 		case FIRE_PROJECTILE_EVENT: {
 			if (!EditorManager::get().isEditMode()) {
-				float direction = 1;
-				float offset = (player->getTile().x / 2);
-				if (player->getRotate().z == 180) {
-					direction = -1;
-					offset = 0;
+				if (ammo > 0) {
+					float direction = 1;
+					float offset = (player->getTile().x / 2);
+					if (player->getRotate().z == 180) {
+						direction = -1;
+						offset = 0;
+					}
+
+					int x = player->getTransform().x + offset;
+					int y = player->getTransform().y + 16;
+					int v = 6; // velocity
+
+					SoundManager::get().playShootingSound();
+					spawnProjectile("data/textures/bullet.png", x, y, v, direction);
+					ammo--;
+					GraphicsManager::get().setAmmo(ammo);
 				}
-
-				int x = player->getTransform().x + offset;
-				int y = player->getTransform().y + 16;
-				int v = 6; // velocity
-
-				SoundManager::get().playShootingSound();
-				spawnProjectile("data/textures/goomba.png", x, y, v, direction);
+				else {
+					SoundManager::get().playNoAmmoSound();
+				}
 			} else {
 				if (EditorManager::get().getInsertState() != InsertState::READY) {
 					insertStateInput();
@@ -331,6 +346,9 @@ void SimulationManager::insertStateInput() {
 					break;
 				case ItemType::COIN_ITEM:
 					EditorManager::get().getObjectToInsert().itemType = ItemType::HEALTH_ITEM;
+					break;
+				case ItemType::AMMO_ITEM:
+					EditorManager::get().getObjectToInsert().itemType = ItemType::AMMO_ITEM;
 					break;
 				default:
 					EditorManager::get().getObjectToInsert().itemType = ItemType::HEALTH_ITEM;
@@ -513,6 +531,12 @@ void SimulationManager::increaseScore(){
 	score += 50;
 	GraphicsManager::get().setScore(score);
 }
+
+void SimulationManager::increaseAmmo() {
+	ammo += 20;
+	GraphicsManager::get().setAmmo(ammo);
+}
+
 
 // level loading
 void SimulationManager::loadLevel(const char* filename) {

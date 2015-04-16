@@ -45,6 +45,7 @@ class SimulationManager {
 		bool isGameOver;
 		int level;
 		int score;
+		int ammo;
 		//bool gameRunning;
 
 		// helper functions
@@ -79,6 +80,7 @@ class SimulationManager {
 		void spawnProjectile(string texture, int x, int y, int velocity, int direction);
 		void updateHealth(int health, int max);
 		void increaseScore();
+		void increaseAmmo();
 
 		// load level functions
 		void gameOver();
