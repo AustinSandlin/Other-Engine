@@ -625,9 +625,12 @@ void SimulationManager::loadLevelCreateObject(XMLElement* child) {
 	z = atoi(location->FirstChildElement("z")->GetText());
 	texture = child->FirstChildElement("texture");
 	physics = atoi(child->FirstChildElement("physics")->GetText());
+	size = child->FirstChildElement("size");
+	width = atoi(size->FirstChildElement("w")->GetText());
+	height = atoi(size->FirstChildElement("h")->GetText());
 
 	// create object, set values, and add to objects
-	Object* tempObj = new Object(texture->GetText(), physics);
+	Object* tempObj = new Object(texture->GetText(), physics, width, height);
 	tempObj->setTransform(x, y, z);
 
 	addObject(tempObj, physics);
