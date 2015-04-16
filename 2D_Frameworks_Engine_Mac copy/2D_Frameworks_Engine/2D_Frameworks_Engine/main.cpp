@@ -80,6 +80,10 @@ void keyboardInput(unsigned char key, int x, int y) {
     SimulationManager::get().keyboardInput(key, x, y);
 }
 
+void keyUp(unsigned char key, int x, int y) {
+    SimulationManager::get().keyUp(key, x, y);
+}
+
 int main(int argc, char* args[]) {
     // Init glut and make a window.
     glutInit(&argc, args);
@@ -90,6 +94,7 @@ int main(int argc, char* args[]) {
     // callback functions and init
     glutMouseFunc(mouseInput);
     glutKeyboardFunc(keyboardInput);
+    glutKeyboardUpFunc(keyUp);
     glutDisplayFunc(render);
     
     // loop

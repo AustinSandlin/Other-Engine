@@ -74,7 +74,7 @@
 		889104931AC4B3BC00991BD9 /* Projectile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Projectile.cpp; path = GameObjects/Projectile.cpp; sourceTree = "<group>"; };
 		889104941AC4B3BC00991BD9 /* Projectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Projectile.h; path = GameObjects/Projectile.h; sourceTree = "<group>"; };
 		889C66DD1AA01B5000D0F77C /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		88C5D7DB1AA02A4A00CF30D4 /* libSOIL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSOIL.dylib; path = ../../../../Projects/libSOIL/libSOIL.dylib; sourceTree = "<group>"; };
+		88C5D7DB1AA02A4A00CF30D4 /* libSOIL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSOIL.dylib; path = build/Debug/libSOIL/libSOIL.dylib; sourceTree = "<group>"; };
 		88EC565E1A8529910082647A /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = build/Debug/libirrklang.dylib; sourceTree = "<group>"; };
 		88F145551AD0A34E0097607B /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Item.cpp; path = GameObjects/Items/Item.cpp; sourceTree = "<group>"; };
 		88F145561AD0A34E0097607B /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = GameObjects/Items/Item.h; sourceTree = "<group>"; };

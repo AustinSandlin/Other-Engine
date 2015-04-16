@@ -27,7 +27,7 @@
 #include "EditorStates.h"
 
 
-#include <SOIL/SOIL.h>
+#include <SOIL.h>
 #include <CoreFoundation/CoreFoundation.h>
 using namespace std;
 
