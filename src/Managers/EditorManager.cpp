@@ -123,7 +123,7 @@ void EditorManager::saveLevel(const char* filename, vector<GameObject*> objects)
 				saveEndFlag(objects[i], tempObject, doc);
 				objectsElements->LinkEndChild(tempObject);
 				break;
-			case FLAG:
+			case SPAWNER:
 				saveGameObject(objects[i], tempObject, doc);
 				saveSpawner(objects[i], tempObject, doc);
 				objectsElements->LinkEndChild(tempObject);

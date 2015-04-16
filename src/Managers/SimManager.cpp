@@ -384,111 +384,115 @@ void SimulationManager::insertStateInput() {
 void SimulationManager::stateConfirmationInput() {
 	InsertState state = EditorManager::get().getInsertState();
 	switch (state) {
-		case InsertState::SELECT_TYPE:
-			switch (EditorManager::get().getObjectToInsert().typeToInsert) {
-				case ObjectType::PLAYER:
-					EditorManager::get().setInsertState(InsertState::PLAYER_CONFIRM);
+	case InsertState::SELECT_TYPE:
+		switch (EditorManager::get().getObjectToInsert().typeToInsert) {
+			case ObjectType::PLAYER:
+				EditorManager::get().setInsertState(InsertState::PLAYER_CONFIRM);
+				break;
+			case ObjectType::OBJECT: {
+					// set next state
+					EditorManager::get().setInsertState(InsertState::OBJECT_TEXTURE);
+
+					// prompt for texture and set texture
+					string texturePath = getTextureFromFilePicker();
+					EditorManager::get().getObjectToInsert().texture = texturePath;
+
 					break;
-				case ObjectType::OBJECT: {
-						// set next state
-						EditorManager::get().setInsertState(InsertState::OBJECT_TEXTURE);
-
-						// prompt for texture and set texture
-						string texturePath = getTextureFromFilePicker();
-						EditorManager::get().getObjectToInsert().texture = texturePath;
-
-						break;
-					}
-				case ObjectType::ENEMY: {
-						EditorManager::get().setInsertState(InsertState::ENEMY_TEXTURE);
+				}
+			case ObjectType::ENEMY: {
+					EditorManager::get().setInsertState(InsertState::ENEMY_TEXTURE);
 					
-						// prompt for texture and set texture
-						string texturePath = getTextureFromFilePicker();
-						EditorManager::get().getObjectToInsert().texture = texturePath;
-					}
+					// prompt for texture and set texture
+					string texturePath = getTextureFromFilePicker();
+					EditorManager::get().getObjectToInsert().texture = texturePath;
+				}
+				break;
+			case ObjectType::ITEM: {
+					EditorManager::get().setInsertState(InsertState::ITEM_TEXTURE);
+
+					// prompt for texture and set texture
+					string texturePath = getTextureFromFilePicker();
+					EditorManager::get().getObjectToInsert().texture = texturePath;
+				}
+				break;
+			case ObjectType::FLAG: {
+					// set next state
+					EditorManager::get().setInsertState(InsertState::FLAG_TEXTURE);
+
+					// prompt for texture and set texture
+					string texturePath = getTextureFromFilePicker();
+					EditorManager::get().getObjectToInsert().texture = texturePath;
+
 					break;
-				case ObjectType::ITEM: {
-						EditorManager::get().setInsertState(InsertState::ITEM_TEXTURE);
+				}
+			case ObjectType::SPAWNER: {
+					// set next state
+					EditorManager::get().setInsertState(InsertState::SPAWNER_TEXTURE);
 
-						// prompt for texture and set texture
-						string texturePath = getTextureFromFilePicker();
-						EditorManager::get().getObjectToInsert().texture = texturePath;
-					}
+					// prompt for texture and set texture
+					string texturePath = getTextureFromFilePicker();
+					EditorManager::get().getObjectToInsert().texture = texturePath;
+
 					break;
-				case ObjectType::FLAG: {
-						// set next state
-						EditorManager::get().setInsertState(InsertState::FLAG_TEXTURE);
+				}
+			default:
+				break;
+		}
+		break;
+	case InsertState::OBJECT_TEXTURE:
+		EditorManager::get().setInsertState(InsertState::OBJECT_CONFIRM);
+		break;
+	case InsertState::ENEMY_TEXTURE:
+		EditorManager::get().setInsertState(InsertState::ENEMY_AI);
+		break;
+	case InsertState::ENEMY_AI:
+		EditorManager::get().setInsertState(InsertState::ENEMY_CONFIRM);
+		break;
+	case InsertState::ITEM_TEXTURE:
+		EditorManager::get().setInsertState(InsertState::ITEM_TYPE);
+		break;
+	case InsertState::ITEM_TYPE:
+		EditorManager::get().setInsertState(InsertState::ITEM_CONFIRM);
+		break;
+	case InsertState::FLAG_TEXTURE:
+		EditorManager::get().setInsertState(InsertState::FLAG_CONFIRM);
+		break;
+	case InsertState::SPAWNER_TEXTURE:
+		EditorManager::get().setInsertState(InsertState::SPAWNER_INTERVAL);
+		break;
+	case InsertState::SPAWNER_INTERVAL: {
+		EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_TEXTURE);
 
-						// prompt for texture and set texture
-						string texturePath = getTextureFromFilePicker();
-						EditorManager::get().getObjectToInsert().texture = texturePath;
+		// prompt for interval and set interval
+		int interval = getIntervalFromConsole();
+		EditorManager::get().getObjectToInsert().spawnInterval = interval;
 
-						break;
-					}
-				case ObjectType::SPAWNER: {
-						// set next state
-						EditorManager::get().setInsertState(InsertState::SPAWNER_TEXTURE);
+		break;
+		}
+	case InsertState::SPAWNER_ENEMY_TEXTURE: {
+		EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_AI);
 
-						// prompt for texture and set texture
-						string texturePath = getTextureFromFilePicker();
-						EditorManager::get().getObjectToInsert().texture = texturePath;
+		// prompt for texture and set texture
+		string enemyTexturePath = getTextureFromFilePicker();
+		EditorManager::get().getObjectToInsert().enemyTexture = enemyTexturePath;
 
-						break;
-					}
-				default:
-					break;
-			}
-			break;
-		case InsertState::OBJECT_TEXTURE:
-			EditorManager::get().setInsertState(InsertState::OBJECT_CONFIRM);
-			break;
-		case InsertState::ENEMY_TEXTURE:
-			EditorManager::get().setInsertState(InsertState::ENEMY_AI);
-			break;
-		case InsertState::ENEMY_AI:
-			EditorManager::get().setInsertState(InsertState::ENEMY_CONFIRM);
-			break;
-		case InsertState::ITEM_TEXTURE:
-			EditorManager::get().setInsertState(InsertState::ITEM_TYPE);
-			break;
-		case InsertState::ITEM_TYPE:
-			EditorManager::get().setInsertState(InsertState::ITEM_CONFIRM);
-			break;
-		case InsertState::FLAG_TEXTURE:
-			EditorManager::get().setInsertState(InsertState::FLAG_CONFIRM);
-			break;
-		case InsertState::SPAWNER_TEXTURE:
-			EditorManager::get().setInsertState(InsertState::SPAWNER_INTERVAL);
-			break;
-		case InsertState::SPAWNER_INTERVAL:
-			EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_TEXTURE);
-
-			// prompt for interval and set interval
-			int interval = getIntervalFromConsole();
-			EditorManager::get().getObjectToInsert().spawnInterval = interval;
-
-			break;
-		case InsertState::SPAWNER_ENEMY_TEXTURE:
-			EditorManager::get().setInsertState(InsertState::SPAWNER_ENEMY_AI);
-
-			// prompt for texture and set texture
-			string enemyTexturePath = getTextureFromFilePicker();
-			EditorManager::get().getObjectToInsert().enemyTexture = enemyTexturePath;
-
-			break;
-		case InsertState::SPAWNER_ENEMY_AI:
-			EditorManager::get().setInsertState(InsertState::SPAWNER_CONFIRM);
-			break;
-		case InsertState::PLAYER_CONFIRM:
-		case InsertState::OBJECT_CONFIRM:
-		case InsertState::ENEMY_CONFIRM:
-		case InsertState::ITEM_CONFIRM:
-		case InsertState::FLAG_CONFIRM:
-		case InsertState::SPAWNER_CONFIRM:
-			EditorManager::get().setInsertState(InsertState::READY);
-			break;
-		default:
-			break;
+		break;
+		}
+	case InsertState::SPAWNER_ENEMY_AI: {
+		EditorManager::get().setInsertState(InsertState::SPAWNER_CONFIRM);
+		break;
+		}
+	case InsertState::PLAYER_CONFIRM:
+	case InsertState::OBJECT_CONFIRM:
+	case InsertState::ENEMY_CONFIRM:
+	case InsertState::ITEM_CONFIRM:
+	case InsertState::FLAG_CONFIRM:
+	case InsertState::SPAWNER_CONFIRM: {
+		EditorManager::get().setInsertState(InsertState::READY);
+		break;
+		}
+	default:
+		break;
 	}
 }
 
@@ -613,7 +617,7 @@ void SimulationManager::loadLevel(const char* filename) {
 
 	// print actual objects
 	int i = 0;
-	for (XMLElement* child = gameObjects ->FirstChildElement(); child != NULL; child = child->NextSiblingElement()) {
+	for (XMLElement* child = gameObjects->FirstChildElement(); child != NULL; child = child->NextSiblingElement()) {
 		switch (atoi(child->FirstChildElement("type")->GetText())) {
 			case OBJECT:
 				loadLevelCreateObject(child);
@@ -658,6 +662,9 @@ void SimulationManager::loadLevel(const char* filename) {
 }
 
 void SimulationManager::loadLevelCreatePlayer(XMLElement* player) {
+	
+	cout << "loading player" << endl;
+
 	// create player object
 	XMLElement* playerLocation = player->FirstChildElement("location");
 	int x = atoi(playerLocation->FirstChildElement("x")->GetText());
@@ -675,9 +682,12 @@ void SimulationManager::loadLevelCreatePlayer(XMLElement* player) {
 }
 
 void SimulationManager::loadLevelCreateObject(XMLElement* child) {
+
+	cout << "loading object" << endl;
+
 	// vars
-	XMLElement *type, *location, *texture;
-	int x, y, z;
+	XMLElement *type, *location, *texture, *size;
+	int x, y, z, width, height;
 	bool physics;
 
 	// getting values
@@ -700,6 +710,9 @@ void SimulationManager::loadLevelCreateObject(XMLElement* child) {
 }
 
 void SimulationManager::loadLevelCreateEnemy(XMLElement* enemy){
+	
+	cout << "loading enemy" << endl;
+
     //create enemy object
     XMLElement* enemyLocation = enemy->FirstChildElement("location");
     int x = atoi(enemyLocation->FirstChildElement("x")->GetText());
@@ -722,6 +735,9 @@ void SimulationManager::loadLevelCreateEnemy(XMLElement* enemy){
 }
 
 void SimulationManager::loadLevelCreateItem(XMLElement* item) {
+	
+	cout << "loading item" << endl;
+
 	// get location
     XMLElement* itemLocation = item->FirstChildElement("location");
     int x = atoi(itemLocation->FirstChildElement("x")->GetText());
@@ -748,6 +764,9 @@ void SimulationManager::loadLevelCreateItem(XMLElement* item) {
 }
 
 void SimulationManager::loadLevelCreateFlag(XMLElement* item) {
+	
+	cout << "loading flag" << endl;
+
 	// get location
     XMLElement* itemLocation = item->FirstChildElement("location");
     int x = atoi(itemLocation->FirstChildElement("x")->GetText());
@@ -764,15 +783,16 @@ void SimulationManager::loadLevelCreateFlag(XMLElement* item) {
 }
 
 void SimulationManager::loadLevelCreateSpawner(XMLElement* spawner){
+	cout << "loading spawner" << endl;
 
     XMLElement* location = spawner->FirstChildElement("location");
     int x = atoi(location->FirstChildElement("x")->GetText());
     int y = atoi(location->FirstChildElement("y")->GetText());
     int z = atoi(location->FirstChildElement("z")->GetText());
-    string texture = enemy->FirstChildElement("texture")->getText();
-	int interval = atoi(enemy->FirstChildElement("interval")->getText());
-	string enemyTexture = enemy->FirstChildElement("enemy-texture")->getText();
-	int enemyAI = atoi(enemy->FirstChildElement("enemy-ai")->GetText());
+	string texture = spawner->FirstChildElement("texture")->GetText();
+	int interval = atoi(spawner->FirstChildElement("interval")->GetText());
+	string enemyTexture = spawner->FirstChildElement("enemy-texture")->GetText();
+	int enemyAI = atoi(spawner->FirstChildElement("enemy-ai")->GetText());
     
 	Spawner* spawnerObj = new Spawner(texture, interval, enemyTexture, enemyAI);
     spawnerObj->setTransform(x, y, z);

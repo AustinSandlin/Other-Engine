@@ -21,6 +21,7 @@
     <ClCompile Include="..\..\src\GameObjects\Object.cpp" />
     <ClCompile Include="..\..\src\GameObjects\Player.cpp" />
     <ClCompile Include="..\..\src\GameObjects\Projectile.cpp" />
+    <ClCompile Include="..\..\src\GameObjects\Spawner.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\Managers\EditorManager.cpp" />
     <ClCompile Include="..\..\src\Managers\GraphicsManager.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="..\..\src\GameObjects\Object.h" />
     <ClInclude Include="..\..\src\GameObjects\Player.h" />
     <ClInclude Include="..\..\src\GameObjects\Projectile.h" />
+    <ClInclude Include="..\..\src\GameObjects\Spawner.h" />
     <ClInclude Include="..\..\src\Managers\EditorManager.h" />
     <ClInclude Include="..\..\src\Managers\EditorStates.h" />
     <ClInclude Include="..\..\src\Managers\GraphicsManager.h" />

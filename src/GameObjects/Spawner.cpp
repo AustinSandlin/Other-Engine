@@ -65,10 +65,10 @@ void Spawner::update(){
 
 		// load the new enemy from the template
 		Enemy* enemy = new Enemy(enemyTexturePath, enemyAIBehavior);
-    	enemy->setTransform(x, y, z);
+    	enemy->setTransform(transform.x, transform.y, transform.z);
 		enemy->setWanderMinDistance();
 		enemy->setWanderMaxDistance();
-    	addObject(enemy, true);
+    	SimulationManager::get().addObject(enemy, true);
 
 		// reset the spawn timer
 		spawnTimer = 0;

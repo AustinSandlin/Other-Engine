@@ -50,6 +50,7 @@ class EditorManager {
 		void saveEnemy(GameObject* obj, XMLElement* objElement, XMLDocument& doc);
 		void saveItem(GameObject* obj, XMLElement* objElement, XMLDocument& doc);
 		void saveEndFlag(GameObject* obj, XMLElement* objElement, XMLDocument& doc);
+		void saveSpawner(GameObject* obj, XMLElement* objElement, XMLDocument& doc);
 		void saveHealthHUD(GameObject* obj, XMLElement* objElement, XMLDocument& doc);
 
 		// insert object

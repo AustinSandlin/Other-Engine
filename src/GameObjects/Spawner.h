@@ -34,7 +34,7 @@ class Spawner : public GameObject {
 		string getTexturePath() { return texturePath; }
 		int getSpawnInterval() { return spawnInterval; }
 		string getEnemyTexturePath() { return enemyTexturePath; }
-		int getEnemyAIBehavior() { return enemyAIBehavior; }
+		int getEnemyAIBehaivor() { return enemyAIBehavior; }
 };
 
 

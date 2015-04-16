@@ -23,6 +23,7 @@
 #include "../GameObjects/HealthHUD.h"
 #include "../GameObjects/Enemy.h"
 #include "../GameObjects/EndFlag.h"
+#include "../GameObjects/Spawner.h"
 #include "../GameObjects/Items/Item.h"
 #include "../tinyxml2/tinyxml2.h"
 
@@ -53,6 +54,7 @@ class SimulationManager {
 		void insertStateInput();
 		void stateConfirmationInput();
 		string getTextureFromFilePicker();
+		int getIntervalFromConsole();
 
 		// constructor
 		SimulationManager();
@@ -91,6 +93,7 @@ class SimulationManager {
 		void loadLevelCreateEnemy(XMLElement* child);
 		void loadLevelCreateItem(XMLElement* child);
 		void loadLevelCreateFlag(XMLElement* child);
+		void loadLevelCreateSpawner(XMLElement* child);
 
 		void centerCameraOnPlayer(GameObject* obj);
 };
